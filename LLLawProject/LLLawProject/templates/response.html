@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Response</title>
+    <style>
+        body {
+            background-color: #4158D0;
+            background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 500;
+            color: white;
+            position: relative;
+        }
+
+        .response {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            padding: 20px;
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 500;
+            z-index: 2;
+            color: #121212;
+        }
+
+        .response ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .response li {
+            margin-bottom: 10px;
+        }
+
+        .card {
+            position: absolute;
+            background: #e3e3e3;
+            box-shadow: 20px 20px 60px #c1c1c1, -20px -20px 60px #ffffff;
+            z-index: 1;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="response" id="response">
+        <ul>
+            {% for line in response_text.split('\n') %}
+                <li>{{ line }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="card" id="card"></div>
+
+    <script>
+        window.onload = function() {
+            var responseDiv = document.getElementById('response');
+            var cardDiv = document.getElementById('card');
+
+            var responseRect = responseDiv.getBoundingClientRect();
+
+            cardDiv.style.width = responseRect.width + 'px';
+            cardDiv.style.height = responseRect.height + 'px';
+            cardDiv.style.top = responseRect.top + 'px';
+            cardDiv.style.left = responseRect.left + 'px';
+        }
+    </script>
+</body>
+</html>
